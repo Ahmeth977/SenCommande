@@ -9,15 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
     
-    - name: Deploy via FTP
+    - name: Setup FTP Deploy
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ftpupload.net
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        port: 21
-        local-dir: ./
         server-dir: ./htdocs/
+        local-dir: ./
+        protocol: ftp
+        port: 21
