@@ -10,13 +10,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Setup FTP Deploy
+    - name: Deploy via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ftpupload.net
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: ./htdocs/
         local-dir: ./
+        server-dir: ./htdocs/
         protocol: ftp
         port: 21
